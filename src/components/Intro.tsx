@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { IconLink } from '@/components/IconLink'
 import { Logo } from '@/components/Logo'
 import { QuickStart } from '@/components/QuickStart'
-import { SignedIn, SignedOut, SignUpButton, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, SignUpButton, useUser } from '@clerk/nextjs'
 
 function BookIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -24,25 +24,26 @@ function GitHubIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 function FeedIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor" {...props}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-6"
+    >
       <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M2.5 3a.5.5 0 0 1 .5-.5h.5c5.523 0 10 4.477 10 10v.5a.5.5 0 0 1-.5.5h-.5a.5.5 0 0 1-.5-.5v-.5A8.5 8.5 0 0 0 3.5 4H3a.5.5 0 0 1-.5-.5V3Zm0 4.5A.5.5 0 0 1 3 7h.5A5.5 5.5 0 0 1 9 12.5v.5a.5.5 0 0 1-.5.5H8a.5.5 0 0 1-.5-.5v-.5a4 4 0 0 0-4-4H3a.5.5 0 0 1-.5-.5v-.5Zm0 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5"
       />
     </svg>
   )
 }
 
-function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor" {...props}>
-      <path d="M9.51762 6.77491L15.3459 0H13.9648L8.90409 5.88256L4.86212 0H0.200195L6.31244 8.89547L0.200195 16H1.58139L6.92562 9.78782L11.1942 16H15.8562L9.51728 6.77491H9.51762ZM7.62588 8.97384L7.00658 8.08805L2.07905 1.03974H4.20049L8.17706 6.72795L8.79636 7.61374L13.9654 15.0075H11.844L7.62588 8.97418V8.97384Z" />
-    </svg>
-  )
-}
-
 export function Intro() {
+  const user = useUser()
+
   return (
     <>
       <div>
@@ -80,10 +81,19 @@ export function Intro() {
           className="flex-none"
         >
           <SignedOut>
-            <SignUpButton>Sign In or Register</SignUpButton>
+            <SignUpButton>
+              <span className="cursor-pointer">Sign In or Register</span>
+            </SignUpButton>
           </SignedOut>
           <SignedIn>
-            <UserButton>My Account</UserButton>
+            <span className="text-sm text-white">
+              {(
+                user.user?.fullName ??
+                user.user?.username ??
+                user.user?.primaryEmailAddress?.emailAddress ??
+                ''
+              ).trim()}
+            </span>
           </SignedIn>
         </IconLink>
       </div>
