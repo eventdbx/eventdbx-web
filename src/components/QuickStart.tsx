@@ -13,7 +13,7 @@ const tabs = [
       'dbx start --foreground',
       'dbx token generate --group admin --user admin --action "*.*"',
     ],
-    note: 'Omit --foreground to run as a background service. Use the EventDBX Client SDK in your preferred language to develop your application.',
+    note: 'Use the EventDBX Client SDK in your preferred language to develop your application.',
   },
   {
     id: 'docker',

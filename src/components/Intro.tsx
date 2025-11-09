@@ -105,7 +105,7 @@ export function IntroFooter() {
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.8125rem]/6 text-gray-500">
       <p className="flex items-baseline gap-x-2">
-        <span>© {new Date().getFullYear()} EventDBX</span>
+        <span>© {new Date().getFullYear()} Patrick Thach</span>
         <span aria-hidden="true" className="text-gray-700">
           •
         </span>

@@ -15,8 +15,8 @@ export async function GET(req: Request) {
   }
 
   let feed = new Feed({
-    title: 'Commit',
-    description: 'Open-source Git client for macOS minimalists',
+    title: 'EventDBX',
+    description: 'EventDBX RSS Feed',
     author,
     id: siteUrl,
     link: siteUrl,
