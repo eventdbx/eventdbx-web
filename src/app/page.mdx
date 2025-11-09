@@ -37,7 +37,7 @@ The core API interfaces such as REST, GraphQL, and gRPC were decoupled into indi
 
 - Cross-platform CLI: EventDBX is now accessible on Windows, macOS, and Linux with a single command: `npx dbx start`
 - Containerized deployment: A Docker image is now available, making it easy to deploy to GCP, AWS, or Azure in production environments.
-- Performance: Benchmark tests confirm EventDBX is extremely fast compared to traditional database systems.
+- Performance: Benchmark tests confirm EventDBX is [extremely fast](https://github.com/thachp/eventdbx-perf/blob/main/reports/_2M_Write.log) compared to traditional database systems.
 - Plugin architecture: The core focuses exclusively on the write-side, while plugins handle read-side operations. The internal queue system includes retry and dead-letter mechanisms to ensure reliable event publishing to custom plugins.
 - Client SDKs: Official client libraries are now available for Go, Python, TypeScript/JavaScript, Java, Rust, and .NET.
 
@@ -47,7 +47,7 @@ The core API interfaces such as REST, GraphQL, and gRPC were decoupled into indi
 
 ## Memory-Safe Database {{ date: '2025-03-06T00:00Z' }}
 
-There has been a growing government push for future software systems to be memory-safe, encouraging developers to adopt memory-safe programming languages. I determined that Rust is the best language for developing what is now called EventDB. Rust offers high performance, memory safety, and concurrency safety—three critical traits for a database system. However, learning Rust is challenging; its ownership and borrowing concepts can be difficult to grasp at first.
+There has been a growing [government push for future software systems](https://www.cisa.gov/resources-tools/resources/memory-safe-languages-reducing-vulnerabilities-modern-software-development) to be memory-safe, encouraging developers to adopt memory-safe programming languages. It is determined that Rust is the best language for developing what is now called EventDB. Rust offers high performance, memory safety, and concurrency safety—three critical traits for a database system. However, learning Rust is challenging; its ownership and borrowing concepts can be difficult to grasp at first.
 
 Building a write database entirely from scratch isn’t practical. Instead, RocksDB, with its Log-Structured Merge (LSM) design, makes perfect sense and aligns naturally with the vision of EventDB as a write-focused database.
 
@@ -73,4 +73,4 @@ A write database should encourage task-based thinking rather than CRUD-based thi
 
 It should also serve as the source of truth for all systems. This means that while state can change, every change in state must be event-driven and carry a clear, purposeful context.
 
-The project is called EventfulDB. It began as a TypeScript prototype, designed to bridge the gap between analytical systems like BigQuery and event-driven applications. However, while Node.js and TypeScript made it easy to experiment, they are ultimately too slow and too high-level for a true database system—one that demands the performance, safety, and precision of a systems language.
+The project is originally called EventfulDB. It began as a TypeScript prototype, designed to bridge the gap between analytical systems like BigQuery and event-driven applications. However, while Node.js and TypeScript made it easy to experiment, they are ultimately too slow and too high-level for a true database system—one that demands the performance, safety, and precision of a systems language.
