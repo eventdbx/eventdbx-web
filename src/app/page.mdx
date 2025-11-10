@@ -12,7 +12,7 @@ I focused on making EventDBX available and accessible in the cloud. Users can no
 `dbx cloud create <domain> --region=us-west1`
 
 If additional resources (storage, CPU, or RAM) are needed, users can easily upgrade their instance:
-`dbx cloud upgrade <domain> --plan=(stream|flow|source)`
+`dbx cloud upgrade <domain> --plan=(free|flow|dedicated)`
 
 All user data is hosted securely on Google Cloud Platform (GCP).
 
@@ -22,6 +22,7 @@ All user data is hosted securely on Google Cloud Platform (GCP).
 - Hosting plans: Introduced data hosting tiers — Stream (free), Flow ($30/month), and Source ($149/month).
 - Observability: Added a Prometheus-compatible /metrics endpoint to report traffic and plugin queue health, making EventDBX compatible with Grafana, Datadog, and other monitoring stacks out of the box.
 - Domain-based grouping: Data can now be grouped by domain context and automatically synchronized to the cloud.
+- Schema versioning: Schemas now support versioning, activation, publishing, rollback, and diff comparisons between versions.
 
 ---
 
