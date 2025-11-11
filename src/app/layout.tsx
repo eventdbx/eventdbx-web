@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next'
 import clsx from 'clsx'
 import { type Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -44,6 +45,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-white dark:bg-gray-950">
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   )
