@@ -56,8 +56,8 @@ export function Intro() {
         <span className="text-sky-300">write-side database system</span>
       </h1>
       <p className="mt-4 text-sm/6 text-gray-300">
-        EventDBX is extremely fast, and it lets you spend less time designing
-        schemas and more time writing the code that drives your application.
+        EventDBX exists to make data trustworthy — by treating every change as
+        an event, cryptographically verified and reproducible.
       </p>
       <QuickStart />
       <div className="mt-8 flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-2 lg:justify-start">

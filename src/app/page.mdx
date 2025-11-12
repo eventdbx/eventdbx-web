@@ -63,14 +63,28 @@ Building a write database entirely from scratch isn’t practical. Instead, Rock
 
 ![](@/images/cqrs.png 'CQRS (Command Query Responsibility Segregation), Martin Fowler')
 
-## What is a Write Database? {{  date: '2024-11-03T00:00Z' }}
+## What is a Write-Side Database? {{  date: '2024-11-03T00:00Z' }}
 
 Based on the [CQRS (Command Query Responsibility Segregation)](https://martinfowler.com/bliki/CQRS.html) design pattern, there should be a clear distinction between the write database and the read database.
 
-The write database doesn’t need to scale horizontally, but it should be more than just writing data to disk. It must be flexible, extensible, and secure, with the ability to track every change over time. It should be customer-facing in purpose—built for developers who are creating applications that serve users, not for database administrators who think in CRUD operations.
+The write-side database doesn’t need to scale horizontally, but it should be more than just writing data to disk. It must be flexible, extensible, and secure, with the ability to track every change over time. It should be customer-facing in purpose—built for developers who are creating applications that serve users, not for database administrators who think in CRUD operations.
 
-A write database should encourage task-based thinking rather than CRUD-based thinking. Developers should model actions and outcomes—what the customer is actually trying to accomplish—rather than tables and fields. This shift in mindset helps developers move faster and focus on delivering real value instead of managing data structures.
+A write-side database should encourage task-based thinking rather than CRUD-based thinking. Developers should model actions and outcomes—what the customer is actually trying to accomplish—rather than tables and fields. This shift in mindset helps developers move faster and focus on delivering real value instead of managing data structures.
 
-It should also serve as the source of truth for all systems. This means that while state can change, every change in state must be event-driven and carry a clear, purposeful context.
+### CRUD-Based Thinking (Conventional Databases)
+
+- Focused on data manipulation — Create, Read, Update, Delete.
+- State is mutable and impermanent.
+- History is often an afterthought (logging, auditing, etc.).
+- Leads to fragile systems that do not explain their past.
+
+### Task-Based Thinking (EventDBX's Philosophy)
+
+- Focused on intent and causality — every change is a task or event.
+- State is derived, not stored.
+- History is immutable and verifiable (Merkle-tree + Noise-secured).
+- Systems become transparent, testable, and replayable.
+
+A write-side database should also serve as the source of truth for all systems. This means that while state can change, every change in state must be event-driven and carry a clear, purposeful context.
 
 The project is originally called EventfulDB. It began as a TypeScript prototype, designed to bridge the gap between analytical systems like BigQuery and event-driven applications. However, while Node.js and TypeScript made it easy to experiment, they are ultimately too slow and too high-level for a true database system—one that demands the performance, safety, and precision of a systems language.
