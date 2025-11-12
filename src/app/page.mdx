@@ -11,8 +11,8 @@ export { Layout as default } from '@/components/Layout'
 I focused on making EventDBX available and accessible in the cloud. Users can now run `dbx cloud auth --email <email>` to register for a free account. This account includes a free 100 MB remote instance on the cloud, created using:
 `dbx cloud create <domain> --region=us-west1`
 
-If additional resources (Storage, VCPU, or RAM) are needed, users can easily upgrade their instance:
-`dbx cloud upgrade <domain> --ram <gb> --vcpu <n> --disk <gb>`
+If additional resources (Disk (GB), VCPU, or RAM) are needed, users can easily upgrade their instance:
+`dbx cloud upgrade <domain> --plan flow --disk 10`
 
 All user data is hosted securely on Google Cloud Platform (GCP).
 
