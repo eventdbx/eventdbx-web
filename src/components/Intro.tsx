@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { IconLink } from '@/components/IconLink'
 import { Logo } from '@/components/Logo'
 import { QuickStart } from '@/components/QuickStart'
-import { SignedIn, SignedOut, SignUpButton, useUser } from '@clerk/nextjs'
+import { useUser } from '@clerk/nextjs'
 
 function BookIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -66,7 +66,7 @@ export function Intro() {
           icon={BookIcon}
           className="flex-none"
         >
-          Docs
+          Documentation
         </IconLink>
         <IconLink
           href="https://github.com/eventdbx"
@@ -76,25 +76,11 @@ export function Intro() {
           GitHub
         </IconLink>
         <IconLink
-          href="https://accounts.eventdbx.com"
+          href="https://docs.eventdbx.com/client-sdks"
           icon={FeedIcon}
           className="flex-none"
         >
-          <SignedOut>
-            <SignUpButton>
-              <span className="cursor-pointer">Sign In or Register</span>
-            </SignUpButton>
-          </SignedOut>
-          <SignedIn>
-            <span className="text-sm text-white">
-              {(
-                user.user?.fullName ??
-                user.user?.username ??
-                user.user?.primaryEmailAddress?.emailAddress ??
-                ''
-              ).trim()}
-            </span>
-          </SignedIn>
+          Client SDKs
         </IconLink>
       </div>
     </>

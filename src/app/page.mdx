@@ -6,22 +6,18 @@ export { Layout as default } from '@/components/Layout'
 
 ![](@/images/deployment.png)
 
-## Free Cloud Database {{ date: '2025-11-10T00:00Z' }}
+## Remote Database {{ date: '2025-11-10T00:00Z' }}
 
-I focused on making EventDBX available and accessible in the cloud. Users can now run `dbx cloud auth --email <email>` to register for a free account. This account includes a free 100 MB remote instance on the cloud, created using:
-`dbx cloud create <domain> --region=us-west1`
+I focused on making data accessible between peers. Users can now run `dbx checkout -c <domain> --remote <host>:<port> --token <remote_token>` to attach remote databases.
 
-If additional resources (Disk (GB), VCPU, or RAM) are needed, users can easily upgrade their instance:
-`dbx cloud upgrade <domain> --plan flow --disk 10`
-
-All user data is securely hosted on Google Cloud Platform (GCP). This feature is currently under development and will be available soon.
+Users can then push/pull data and schema between peers: `dbx push <domain>` or `dbx pull <domain>` and `dbx push schema <domain>` or `dbx pull schema <domain>`
 
 ### <SparkleIcon /> Improvements
 
-- Cloud deployment: Deploy EventDBX to production on Google Cloud Platform with a single command.
+- Multitenancy: Domains are segregated by sharding, and tokens can be assigned to specific domains, preventing permission leakage.
 - Observability: Added a Prometheus-compatible /metrics endpoint to report traffic and plugin queue health, making EventDBX compatible with Grafana, Datadog, and other monitoring stacks out of the box.
-- Domain-based grouping: Data can now be grouped by domain context and automatically synchronized to the cloud.
 - Schema versioning: Schemas now support versioning, activation, publishing, rollback, and diff comparisons between versions.
+- Replication: Data and schema are segregated by sharding instead of by directory, introduced `watch` to automate replication cycles.
 
 ---
 

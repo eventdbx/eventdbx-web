@@ -11,7 +11,7 @@ const tabs = [
     commands: [
       'npm install eventdbx -g',
       'dbx start --foreground',
-      'dbx token generate --group admin --user admin --action "*.*"',
+      'dbx token bootstrap --stdout',
     ],
     note: 'Use the EventDBX Client SDK in your preferred language to develop your application.',
   },
@@ -25,7 +25,7 @@ const tabs = [
       `docker run --name eventdbx --detach --publish 6363:6363 \\
   --volume "$PWD/data:/var/lib/eventdbx" \\
   thachp/eventdbx:latest`,
-      `docker exec eventdbx sh -c 'cat /var/lib/eventdbx/.eventdbx/cli.token'`,
+      `docker exec eventdbx sh -c 'dbx token bootstrap --stdout'`,
     ],
     note: 'Use the EventDBX Client SDK in your preferred language to develop your application.',
   },
