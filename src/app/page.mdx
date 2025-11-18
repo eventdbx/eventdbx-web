@@ -14,7 +14,7 @@ Users can then push/pull data and schema between peers: `dbx push <domain>` or `
 
 ### <SparkleIcon /> Improvements
 
-- Multitenancy: Domains are segregated by sharding, and tokens can be assigned to specific domains, preventing permission leakage.
+- Multitenancy: Tenants are segregated by sharding, and tokens can be assigned to specific domains, preventing permission leakage.
 - Observability: Added a Prometheus-compatible /metrics endpoint to report traffic and plugin queue health, making EventDBX compatible with Grafana, Datadog, and other monitoring stacks out of the box.
 - Schema versioning: Schemas now support versioning, activation, publishing, rollback, and diff comparisons between versions.
 - Replication: Data and schema are segregated by sharding instead of by directory, introduced `watch` to automate replication cycles.
